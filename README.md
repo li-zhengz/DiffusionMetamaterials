@@ -16,11 +16,21 @@
 </div>
 
 $~$
-<p align="center"><img src="DiffuMeta.png#gh-light-mode-only"\></p>
+<p align="center"><img src="figures/DiffuMeta.png#gh-light-mode-only"\></p>
 
 ## 🎯 Overview
 
 This project proposes a generative framework integrating diffusion transformers with a novel algebraic language representation, encoding 3D shell metamaterial geometries as mathematical sentences for inverse design with precisely targeted mechanical properties.
+
+## ✨ Highlights
+
+- **Novel Algebraic Language**: Introduces a unique mathematical representation that encodes 3D shell metamaterial geometries as interpretable algebraic sentences
+- **Diffusion Transformers**: Leverages state-of-the-art diffusion models combined with transformer architectures for high-quality generation
+- **Inverse Design Capability**: Enables precise targeting of specific mechanical properties for metamaterial design
+
+$~$
+<p align="center"><img src="figures/sequence_generation.png#gh-light-mode-only"\></p>
+
 
 ## 📁 Project Structure
 
