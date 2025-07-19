@@ -28,8 +28,7 @@ This project proposes a generative framework integrating diffusion transformers 
 - **Diffusion Transformers**: Leverages state-of-the-art diffusion models combined with transformer architectures for high-quality generation
 - **Inverse Design Capability**: Enables precise targeting of specific mechanical properties for metamaterial design
 
-$~$
-<p align="center"><img src="figures/sequence_generation.png#gh-light-mode-only"\></p>
+<p align="center"><img src="figures/sequence_generation.png#gh-light-mode-only" width="600"\></p>
 
 
 ## 📁 Project Structure
