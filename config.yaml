@@ -1,0 +1,50 @@
+# Diffusion Model Training Configuration
+
+# Wandb Configuration
+wandb:
+  project: "diffusion-training"
+  entity: null  # Set to your wandb username/entity
+  
+# Training Parameters
+training:
+  train_batch_size: 512
+  num_epochs: 200001
+  lr: 0.0001  
+  optimizer_type: "adamw"  # Options: adam, nadam, adamw, sgd
+  max_grad_norm: 1.0
+  save_model_step: 500
+  
+# Model Architecture
+model:
+  input_dims: 128
+  output_dims: 256
+  hidden_t_dim: 100
+  transformer_num_hidden_layers: 2
+  transformer_num_attention_heads: 4
+  transformer_hidden_size: 512
+  proj_activation_func: "relu"
+  mlp_ratio: 5
+  depth: 6
+  config_name: "albert-base-v2"
+  cross_attn: true
+  embedding_scale: 3.0
+  learn_embedding_scale: false
+  
+# Diffusion Parameters
+diffusion:
+  noise_schedule: "sqrt"  # Options: sqrt, cosine
+  diffusion_steps: 2000
+  predict_xstart: true
+  section_counts: "ddim2000"
+  training_mode: "e2e"
+  normalize_nll_loss: false
+  
+# Classifier-Free Guidance
+cfg:
+  cfg_scale: 4.0
+  cfg_dropout_prob: 0.1
+  
+# Model Freezing (optional)
+freezing:
+  freeze_embed: false
+  freeze_embed_epoch: 500 

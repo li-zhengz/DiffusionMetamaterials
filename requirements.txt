@@ -1,0 +1,44 @@
+# PyTorch and Deep Learning
+torch>=2.0.0
+
+# Transformers and NLP
+transformers>=4.30.0
+einops>=0.6.1
+
+# Scientific Computing
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+matplotlib>=3.6.0
+scikit-learn>=1.3.0
+scikit-image>=0.20.0
+
+# Progress bars and utilities
+tqdm>=4.65.0
+
+# Configuration and logging
+PyYAML>=6.0
+wandb>=0.15.0
+
+# Symbolic computation
+sympy>=1.12
+
+# Interpolation and visualization
+seaborn>=0.12.0
+
+# For parallel processing (already in Python standard library but listing for clarity)
+# multiprocessing - built-in
+# pickle - built-in
+# csv - built-in
+# re - built-in
+# os - built-in
+# argparse - built-in
+# abc - built-in
+# math - built-in
+# enum - built-in
+# sys - built-in
+# collections - built-in
+# functools - built-in
+# itertools - built-in
+# json - built-in
+# time - built-in 

@@ -1,0 +1,345 @@
+# ========================================================================================
+# DIFFUSION MODEL PROJECT SPECIFIC
+# ========================================================================================
+
+# Experiment tracking and logging
+wandb/
+runs/
+output/
+*.log
+*.out
+*.err
+
+# Model files and checkpoints  
+*.pth
+*.pt
+*.ckpt
+model_checkpoints/
+checkpoints/
+best_model*
+
+# Training outputs and results
+generation_results/
+samples/
+eval_results/
+experiments/
+exps/
+
+# Data files
+*.dat
+*.csv
+*.json
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Cluster/SLURM specific
+slurm-*.out
+*.sbatch.log
+cluster_logs/
+
+# ========================================================================================
+# PYTHON
+# ========================================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+conda_env/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ========================================================================================
+# JUPYTER NOTEBOOK
+# ========================================================================================
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# ========================================================================================
+# ML/AI SPECIFIC
+# ========================================================================================
+
+# PyTorch specific
+*.pth.tar
+lightning_logs/
+
+# TensorBoard logs
+tensorboard_logs/
+tb_logs/
+logs/
+
+# Weights & Biases
+wandb/
+
+# MLflow
+mlruns/
+
+# Sacred
+sacred/
+
+# Optuna
+optuna_storage/
+
+# ========================================================================================
+# IDE AND EDITORS
+# ========================================================================================
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ========================================================================================
+# OPERATING SYSTEM
+# ========================================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ========================================================================================
+# PACKAGE MANAGERS
+# ========================================================================================
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# pipenv
+#Pipfile.lock
+
+# poetry
+#poetry.lock
+
+# pdm
+#pdm.lock
+.pdm.toml
+__pypackages__/
+
+# Conda
+*.conda
+*.tar.bz2
+
+# ========================================================================================
+# WEB FRAMEWORKS (if applicable)
+# ========================================================================================
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask
+instance/
+.webassets-cache
+
+# ========================================================================================
+# DOCUMENTATION
+# ========================================================================================
+
+# Sphinx documentation
+docs/_build/
+docs/build/
+
+# mkdocs documentation
+/site
+
+# ========================================================================================
+# TEMPORARY AND CACHE FILES
+# ========================================================================================
+
+# General temporary files
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Archive files (unless specifically needed)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ========================================================================================
+# LARGE FILES AND DATASETS
+# ========================================================================================
+
+# Large model files (uncomment if you don't want to track large models)
+# *.bin
+# *.safetensors
+
+# Large datasets (uncomment if you don't want to track datasets)
+# data/raw/
+# data/processed/
+# data/external/
+
+# ========================================================================================
+# CONFIGURATION FILES WITH SECRETS
+# ========================================================================================
+
+# Configuration files that might contain secrets
+*config_local*.yaml
+*config_secret*.yaml
+secrets.yaml
+.secrets
+credentials.json
+api_keys.txt
+
+# ========================================================================================
+# PROJECT SPECIFIC ADDITIONS
+# ========================================================================================
+
+# Add any project-specific files or directories here
+# example: my_custom_output/

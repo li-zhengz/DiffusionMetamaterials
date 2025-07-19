@@ -1,0 +1,1 @@
+python sample.py --cfg_scale 10.0 --num_samples 200 --model_checkpoint model_checkpoints/model_checkpoint.pth
