@@ -186,6 +186,9 @@ python dataGeneration/validity_check.py
 ### Sampling Outputs  
 - `generation_results/`: Generated equation samples
 - `generation_results/sample_output.txt`: Sampling logs and statistics
+- `generation_results/valid_samples.csv`: Successfully generated valid algebraic equations
+- `generation_results/invalid_samples.csv`: Generated equations that failed validation (cannot be converted to connected shell geometries)
+
 
 ## 📧 Contact
 

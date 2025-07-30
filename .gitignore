@@ -19,7 +19,7 @@ checkpoints/
 best_model*
 
 # Training outputs and results
-generation_results/
+# generation_results/
 samples/
 eval_results/
 experiments/

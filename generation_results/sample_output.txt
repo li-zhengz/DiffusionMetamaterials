@@ -1,0 +1,9 @@
+Processing model: model_checkpoints/model_checkpoint.pth
+**********************************************************************
+Model loaded from: model_checkpoints/model_checkpoint.pth
+Number of samples = 200
+Validity score =  79.50%
+Unique score =  87.42%
+Novelty score =  87.42%
+Generation time =  74.34 s
+**********************************************************************
