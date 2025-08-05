@@ -133,7 +133,7 @@ To conduct similar studies as those presented in the publication, start by cloni
 https://github.com/li-zhengz/DiffuMeta.git
 ```
 
-Next, download the data and model checkpoints provided in the ETHZ Research Collection. Unzip the dataset in the dataset folder and the pre-trained model in the model_checkpoint.zip, as shown in the project structure. 
+Next, download the data and model checkpoints provided in the [ETHZ Research Collection](https://www.research-collection.ethz.ch/handle/20.500.11850/746797). Unzip the dataset in the `dataset` folder and the pre-trained model in the `model_checkpoint.zip`, as shown in the project structure. 
 
 ### Training
 
