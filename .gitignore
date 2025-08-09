@@ -27,7 +27,7 @@ exps/
 
 # Data files
 *.dat
-*.csv
+# *.csv
 *.json
 *.pkl
 *.pickle
