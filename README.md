@@ -1,6 +1,8 @@
 
 <h1 align="center">DiffuMeta: Algebraic Language Models for Inverse Design of Metamaterials via Diffusion Transformers</h1>
 <h4 align="center">
+<a href="https://arxiv.org/abs/2507.15753"><img alt="Static Badge" src="https://img.shields.io/badge/arxiv-https%3A%2F%2Farxiv.org%2Fabs%2F2507.15753-blue
+"></a>
 </h4>
 <div align="center">
   <span class="author-block">
