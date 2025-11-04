@@ -32,21 +32,30 @@ term_list = first_order_term + second_order_term + third_order_term
 
 count_term = 0
 count_eq = 0
-max_integer = 5
+max_integer = 9
 max_decimal = 10
-min_terms = 3
+min_terms = 1
 max_terms = 3
 levelset = 0
+interval = 0.05
 
 def generate_coefficient(max_integer, max_decimal):
-
-    coefficient_integer = randrange(0,max_integer+1)
-    if coefficient_integer == 0:
-        coefficient_decimal = randrange(1,max_decimal)
-    else:
-        coefficient_decimal = randrange(max_decimal)
-    coefficient = f"{coefficient_integer}.{coefficient_decimal}"
-
+    # Generate coefficient in increments of interval (0.05)
+    # Range: 0.05 to max_integer + 0.95
+    min_value = interval  # 0.05
+    max_value = max_integer + (1 - interval)
+    
+    # Calculate number of possible steps
+    num_steps = int((max_value - min_value) / interval) + 1
+    
+    # Generate a random step and calculate coefficient
+    random_step = randrange(0, num_steps)
+    coefficient = min_value + random_step * interval
+    
+    if interval == 0.05:
+        coefficient = f"{coefficient:.2f}"
+    elif interval == 0.1:
+        coefficient = f"{coefficient:.1f}"
     return coefficient
 
 def is_equation_dependent_on_xyz(equation):
@@ -142,10 +151,10 @@ def generate_valid_implicit_equations(_):
     while True:
         eq = ''
         num_term = randrange(min_terms, max_terms + 1)
-        # if num_term == 1:
-        #     eq_terms = np.random.choice(third_order_term, 1)
-        # else:
-        eq_terms = np.random.choice(term_list, num_term, replace = False).tolist()
+        if num_term == 1:
+            eq_terms = np.random.choice(third_order_term, 1)
+        else:   
+            eq_terms = np.random.choice(term_list, num_term, replace = False).tolist()
 
         for term in eq_terms:
             coefficient = generate_coefficient(max_integer, max_decimal)
@@ -164,6 +173,43 @@ def generate_valid_implicit_equations(_):
         if is_dependent and is_valid:
             return eq
 
+def sample_implicit_equations(num_samples):
+    """
+    Generates multiple equations and returns both valid and invalid ones.
+    This function is intended to be run in a multiprocessing pool.
+    Returns a tuple of (valid_equations_list, invalid_equations_list).
+    """
+    valid_eqs = []
+    invalid_eqs = []
+    
+    for _ in range(num_samples):
+        eq = ''
+        num_term = randrange(min_terms, max_terms + 1)
+        if num_term == 1:
+            eq_terms = np.random.choice(third_order_term, 1)
+        else:   
+            eq_terms = np.random.choice(term_list, num_term, replace = False).tolist()
+
+        for term in eq_terms:
+            coefficient = generate_coefficient(max_integer, max_decimal)
+            sign = np.random.choice(['-', '+'])
+            eq += f"{sign}{coefficient}*{term}"
+            
+        const = generate_coefficient(max_integer, max_decimal)
+        const_sign = np.random.choice(['-', '+'])
+        eq += f"{const_sign}{const}"
+        eq = eq.lstrip('+')
+        
+        is_dependent = is_equation_dependent_on_xyz(eq)
+        is_valid = is_mesh_valid(eq)
+        
+        # Collect valid and invalid equations separately
+        if is_dependent and is_valid:
+            valid_eqs.append(eq)
+        else:
+            invalid_eqs.append(eq)
+    
+    return (valid_eqs, invalid_eqs)
 # eq_example = '3.7*cos(y) - 1.8*cos(z) + 5.3*cos(x)*sin(z) - 1.7'
 
 eq_list = []
@@ -172,35 +218,59 @@ def main(num_eqs, num_processes):
     """
     Main function to generate equations using multiprocessing.
     """
-    worker_func = generate_valid_implicit_equations
-
+    # Distribute work across processes
+    equations_per_process = num_eqs // num_processes
+    remaining_equations = num_eqs % num_processes
+    
+    # Create work distribution list
+    work_distribution = [equations_per_process] * num_processes
+    for i in range(remaining_equations):
+        work_distribution[i] += 1
+    
     with Pool(processes=num_processes) as pool:
-        results = pool.map(worker_func, range(num_eqs))
+        results = pool.map(sample_implicit_equations, work_distribution)
 
-    return results
+    # Combine results from all processes
+    all_valid_eqs = []
+    all_invalid_eqs = []
+    
+    for valid_eqs, invalid_eqs in results:
+        all_valid_eqs.extend(valid_eqs)
+        all_invalid_eqs.extend(invalid_eqs)
+
+    return (all_valid_eqs, all_invalid_eqs)
 
 if __name__ == '__main__':
 
-    num_eqs = 20000  # Number of equations to generate
+    num_eqs = 2000  # Number of equations to generate
     num_processes = 20  # Number of parallel processes
 
     valid_output_filename = '../data/implicit_equations/valid_tpms_equations.csv'
 
     start = time.time()
-    results = main(num_eqs, num_processes)
-
-    valid_eqs = results
-    invalid_eqs = []
+    valid_eqs, invalid_eqs = main(num_eqs, num_processes)
     end = time.time()
 
-    print(f"Generated {num_eqs} TPMS Equations")
+    total_generated = len(valid_eqs) + len(invalid_eqs)
+    
+    print(f"Generated {total_generated} TPMS Equations")
     print(f"     #valid eqs = {len(valid_eqs)}")
     print(f"     #invalid eqs = {len(invalid_eqs)}")
+    print(f"     Success rate = {len(valid_eqs)/total_generated*100:.1f}%")
     print(f"Time = {end-start: .4f} s")
+    
+    # Show some examples
+    print(f"\nExample valid equations:")
+    for i, eq in enumerate(valid_eqs[:3]):
+        print(f"  {i+1}. {eq}")
+    
+    print(f"\nExample invalid equations:")
+    for i, eq in enumerate(invalid_eqs[:3]):
+        print(f"  {i+1}. {eq}")
 
-    with open(valid_output_filename, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        # writer.writerow(['equation'])
+    # with open(valid_output_filename, 'w', newline='') as csvfile:
+    #     writer = csv.writer(csvfile)
+    #     # writer.writerow(['equation'])
 
-        for eq in valid_eqs:
-            writer.writerow([eq])
+    #     for eq in valid_eqs:
+    #         writer.writerow([eq])
