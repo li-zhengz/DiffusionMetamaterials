@@ -1,8 +1,6 @@
-
 <h1 align="center">DiffuMeta: Algebraic Language Models for Inverse Design of Metamaterials via Diffusion Transformers</h1>
 <h4 align="center">
-<a href="https://www.nature.com/articles/s42256-026-01218-8#article-info"><img alt="Static Badge" src="<img alt="Static Badge" src="https://img.shields.io/badge/DOI-10.1038%2Fs42256--026--01218--8-blue">
-"></a>
+<a href="https://www.nature.com/articles/s42256-026-01218-8#article-info"><img alt="Static Badge" src="https://img.shields.io/badge/Paper-10.1038%2Fs42256--026--01218--8-blue"></a>
 <a href="https://doi.org/10.5281/zenodo.18598194"><img src="https://zenodo.org/badge/1022779339.svg" alt="DOI"></a>
 </h4>
 <div align="center">
